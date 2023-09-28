@@ -1,9 +1,6 @@
 name= Terraform
 
 on= [push]
-  
- # branches:
-     # main  Change this to your desired branch
 jobs=
   terraform=
     runs-on= ubuntu-latest
@@ -36,4 +33,4 @@ jobs=
       - name: Terraform apply
         run: terraform apply auto-approve
 
-    }
+    

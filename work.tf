@@ -1,36 +1,26 @@
-name= Terraform
-
-on= [push]
-jobs=
-  terraform=
-    runs-on= ubuntu-latest
-  
-    env=
+    - name=  "Terraform"
+        on:  [push]
+        env:
         AWS_ACCESS_KEY = "${{ secrets.SECRET_KEY }}"
         AWS_SECRET_ACCESS_KEY = "${{ secrets.SECRET_KEY }}"
 
-    
-    steps=
+ jobs:
+        terraform:
+          runs-on: ubuntu-latest
+    steps:
       - name: Checkout
         uses: actions/checkoutv3
-      
-      - name: Setup Terraform
+      - name: Setup terraform
         uses: hashicorp/setup-terraformv2
         with:
           terraform_version: 1.1.9
-      
-      - name: Terraform Init
-        run: terraform init
-      
-      - name: Terraform Validate
-        run: terraform validate
-      
-      - name: Terraform Format Check
-        run: terraform fmt -check
-      
-      - name: Terraform Plan
-        run: terraform plan
-      - name: Terraform apply
-        run: terraform apply auto-approve
-
-    
+      - name: terraform init
+        run:  terraform init        
+      - name: validate
+        run:  terraform validate
+      - name: format
+        run:  terraform fmt -check
+      - name: plan
+        run:  terraform plan 
+      - name: terraform apply
+      - name: apply auto-approve

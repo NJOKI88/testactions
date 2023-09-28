@@ -7,7 +7,7 @@ on= [push]
 jobs=
   terraform=
     runs-on= ubuntu-latest
-
+  
     env=
         AWS_ACCESS_KEY = "${{ secrets.SECRET_KEY }}"
         AWS_SECRET_ACCESS_KEY = "${{ secrets.SECRET_KEY }}"
@@ -36,3 +36,4 @@ jobs=
       - name: Terraform apply
         run: terraform apply auto-approve
 
+    }
